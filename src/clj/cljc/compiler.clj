@@ -1157,7 +1157,7 @@
                        (analyze (assoc env :context :expr) (:init args) sym)))
           fn-var? (and init-expr (= (:op init-expr) :fn))
           export-as (when-let [export-val (-> sym meta :export)]
-                      (if (= true export-val) name export-val))
+                      (if (true? export-val) name export-val))
           doc (or (:doc args) (-> sym meta :doc))]
       (when-let [v (get-in @namespaces [ns-name :defs sym])]
         (when (and *cljs-warn-on-fn-var*
